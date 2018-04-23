@@ -1,6 +1,17 @@
 # graphql-php-sqlite
 A basic graphql server using the graphql-php package that works with a sqlite database. 
 
+### Browsing API
+The most convenient way to browse GraphQL API is by using [GraphiQL](https://github.com/graphql/graphiql)
+But setting it up from scratch may be inconvenient. An easy alternative is to use one of 
+the existing Google Chrome extensions:
+- [ChromeiQL](https://chrome.google.com/webstore/detail/chromeiql/fkkiamalmpiidkljmicmjfbieiclmeij)
+- [GraphiQL Feen](https://chrome.google.com/webstore/detail/graphiql-feen/mcbfdonlkfpbfdpimkjilhdneikhfklp)
+
+Set `http://localhost:8080?debug=1` as your GraphQL endpoint/server in one of these extensions 
+and try clicking "Docs" button (usually in the top-right corner) to browse auto-generated 
+documentation.
+
 ### Setup 
 
 Instructions assume your are running MAMP (or alike) but MAMP is certainly not required. Feel free to use a PHP environment of your choice. 
