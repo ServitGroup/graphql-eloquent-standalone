@@ -11,13 +11,13 @@ class HtmlField
         // (for example when it is a part of some interface)
         return [
             'name' => $name,
-            'type' => Types::string(),
+            'type' => GraphQL::string(),
             'args' => [
                 'format' => [
-                    'type' => Types::type('contentFormatEnum'),
+                    'type' => GraphQL::type('contentFormatEnum'),
                     'defaultValue' => ContentFormatEnumType::FORMAT_HTML
                 ],
-                'maxLength' => Types::int()
+                'maxLength' => GraphQL::int()
             ],
             'resolve' => function($object, $args) use ($objectKey) {
                 $html = $object->{$objectKey};

@@ -12,12 +12,12 @@ class UserType extends ObjectType
             'description' => 'Our blog authors',
             'fields' => function() {
                 return [
-                    'id' =>[ 'type'=> Types::int()],
-                    'firstName' =>[ 'type'=> Types::string()],
-                    'lastName' =>[ 'type'=> Types::string()],
-                    'email' =>[ 'type'=> Types::string()],
+                    'id' =>[ 'type'=> GraphQL::int()],
+                    'firstName' =>[ 'type'=> GraphQL::string()],
+                    'lastName' =>[ 'type'=> GraphQL::string()],
+                    'email' =>[ 'type'=> GraphQL::string()],
                     'files'=>[
-                        'type' => Types::listOf(Types::type('file')),
+                        'type' => GraphQL::listOf(GraphQL::type('file')),
                         'description' => 'files',
                         'resolve' => function($user,$args){
                             return $user->files;

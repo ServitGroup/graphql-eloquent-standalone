@@ -3,32 +3,32 @@ use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 
-class QueryType extends ObjectType
+class FileQuery extends ObjectType
 {
     public function __construct()
     {
         $config = [
             'name' => 'Query',
             'fields' => [
-                'status' => Types::boolean(),
+                'status' => GraphQL::boolean(),
 
                 //==== move to  UserQuery.php
                 // 'users'=>[
                 //     'name'=>'users',
-                //     'type'=>Types::listOf(Types::type('user')),
+                //     'type'=>GraphQL::listOf(GraphQL::type('user')),
                 //     'description' => 'user list',
                 //     'args' => [
-                //         'limit' =>[ 'type'=> Types::int(), 'defaultValue'=>3 ]
+                //         'limit' =>[ 'type'=> GraphQL::int(), 'defaultValue'=>3 ]
                 //     ],
                 //     'resolve' => function($root,$args){
                 //         return User::take($args['limit'])->get();
                 //     }
                 // ],
                 // 'user' => [
-                //     'type' => Types::type('user'),
+                //     'type' => GraphQL::type('user'),
                 //     'description' => 'Returns user by id (in range of 1-5)',
                 //     'args' => [
-                //         'id' => Types::nonNull(Types::id())
+                //         'id' => GraphQL::nonNull(GraphQL::id())
                 //     ],
                 //     'resolve' => function($root,$args) {
                 //         return User::find($args['id']);
@@ -37,9 +37,9 @@ class QueryType extends ObjectType
                 //==== move to  UserQuery.php
                 
                 'file'=>[
-                    'type'=>Types::type('file'),
+                    'type'=>GraphQL::type('file'),
                     'args'=>[
-                        'id'=> Types::nonNull(Types::id())
+                        'id'=> GraphQL::nonNull(GraphQL::id())
                     ],
                     'resolve' => function($root,$args) {
                         return File::find($args['id']);
@@ -48,7 +48,7 @@ class QueryType extends ObjectType
                 'files'=>[
                     'name'=>'files',
                     'description'=> 'files',
-                    'type'=> Types::listOf(Types::type('file')),
+                    'type'=> GraphQL::listOf(GraphQL::type('file')),
                     'resolve'=> function($root,$args) {
                         return File::get();
                     }

@@ -1,9 +1,15 @@
 <?php
 use \GraphQL\Schema;
-use \GraphQL\GraphQL;
+use \GraphQL\GraphQL as GraphQLbase;
 use GraphQL\Type\Definition\ObjectType;
 use \GraphQL\Error\FormattedError;
 try {
+
+    GraphQL::require_all(__DIR__.'/graphql');
+    GraphQL::includeDir(__DIR__.'/graphql');
+    // GraphQL::includeDir(__DIR__.'/graphql/query');
+    // GraphQL::includeDir(__DIR__.'/graphql/mutation');
+
     $appContext = new AppContext();
     $appContext->viewer = User::find(1);
     $appContext->rootUrl = 'http://localhost:8080';
@@ -22,13 +28,13 @@ try {
     }
 
     $useryqry = (new UserQuery())->getFields();  // type of Objectype
-    $queryqry = (new QueryType())->getFields();  // type of Objectype
+    $queryqry = (new FileQuery())->getFields();  // type of Objectype
     $query = new ObjectType(['name'=>'Query','fields'=> $useryqry    + $queryqry]);
     $schema = new Schema([
         'query' => $query
     ]);
         
-    $result = GraphQL::execute(
+    $result = GraphQLbase::execute(
         $schema,
         $data['query'],
         null,

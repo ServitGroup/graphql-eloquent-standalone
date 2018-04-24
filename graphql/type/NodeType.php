@@ -8,7 +8,7 @@ class NodeType extends InterfaceType
         $config = [
             'name' => 'Node',
             'fields' => [
-                'id' => Types::id()
+                'id' => GraphQL::id()
             ],
             'resolveType' => [$this, 'resolveNodeType']
         ];
@@ -18,11 +18,11 @@ class NodeType extends InterfaceType
     public function resolveNodeType($object)
     {
         if ($object instanceof User) {
-            return Types::type('user');
+            return GraphQL::type('user');
         } else if ($object instanceof Image) {
-            return Types::type('image');
+            return GraphQL::type('image');
         } else if ($object instanceof Story) {
-            return Types::type('story');
+            return GraphQL::type('story');
         }
     }
 }

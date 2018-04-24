@@ -12,11 +12,11 @@ class FileType extends ObjectType
             'description' => 'File',
             'fields' => function() {
                 return [
-                    'id'=>['type'=>Types::id()],
-                    'name'=>['type'=>Types::string()],
-                    'folder_id'=>['type'=>Types::string()],
-                    'user_id'=>['type'=>Types::int()],
-                    'TEXT'=>['type'=>Types::string()],
+                    'id'=>['type'=>GraphQL::id()],
+                    'name'=>['type'=>GraphQL::string()],
+                    'folder_id'=>['type'=>GraphQL::string()],
+                    'user_id'=>['type'=>GraphQL::int()],
+                    'TEXT'=>['type'=>GraphQL::string()],
                 ];
             }
         ];
