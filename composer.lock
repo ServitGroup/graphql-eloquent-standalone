@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e669f6dc74ed7613c93d2d995988a35d",
+    "content-hash": "66d7ace919397981bf5a87e6a7346e6c",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -72,74 +72,6 @@
                 "string"
             ],
             "time": "2018-01-09T20:05:19+00:00"
-        },
-        {
-            "name": "folklore/graphql",
-            "version": "v1.0.40",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Folkloreatelier/laravel-graphql.git",
-                "reference": "389c38de522ae8a5ed15ed5c0189d492ea9e72af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Folkloreatelier/laravel-graphql/zipball/389c38de522ae8a5ed15ed5c0189d492ea9e72af",
-                "reference": "389c38de522ae8a5ed15ed5c0189d492ea9e72af",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*",
-                "php": ">=5.5.9",
-                "webonyx/graphql-php": "~0.10.2"
-            },
-            "require-dev": {
-                "fzaninotto/faker": "~1.4",
-                "mockery/mockery": "0.9.*",
-                "orchestra/testbench": "3.1.*|3.2.*|3.3.*|3.4.*|3.5.*",
-                "phpunit/phpunit": "~4.0|~5.0|~5.7|~6.0",
-                "satooshi/php-coveralls": "^1.0"
-            },
-            "type": "project",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Folklore\\GraphQL\\ServiceProvider"
-                    ],
-                    "aliases": {
-                        "GraphQL": "Folklore\\GraphQL\\Support\\Facades\\GraphQL"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Folklore\\GraphQL\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Folklore",
-                    "email": "info@atelierfolklore.ca",
-                    "homepage": "http://atelierfolklore.ca"
-                },
-                {
-                    "name": "David Mongeau-Petitpas",
-                    "email": "dmp@atelierfolklore.ca",
-                    "homepage": "http://mongo.ca",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Facebook GraphQL for Laravel",
-            "keywords": [
-                "framework",
-                "graphql",
-                "laravel",
-                "react"
-            ],
-            "time": "2018-02-26T21:52:14+00:00"
         },
         {
             "name": "illuminate/container",
@@ -347,16 +279,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.26.4",
+            "version": "1.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "e3d9014279133a3cccc01f6a691322a2d5a6a87b"
+                "reference": "ef81c39b67200dcd7401c24363dcac05ac3a4fe9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e3d9014279133a3cccc01f6a691322a2d5a6a87b",
-                "reference": "e3d9014279133a3cccc01f6a691322a2d5a6a87b",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ef81c39b67200dcd7401c24363dcac05ac3a4fe9",
+                "reference": "ef81c39b67200dcd7401c24363dcac05ac3a4fe9",
                 "shasum": ""
             },
             "require": {
@@ -391,7 +323,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-04-17T15:35:42+00:00"
+            "time": "2018-04-23T09:02:57+00:00"
         },
         {
             "name": "psr/container",
@@ -743,16 +675,16 @@
         },
         {
             "name": "webonyx/graphql-php",
-            "version": "v0.10.2",
+            "version": "v0.11.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webonyx/graphql-php.git",
-                "reference": "7cc863df37b2270ec2b57cb9d322da064d832a59"
+                "reference": "f438a726cd523bc584e78d866eca270165c42fd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webonyx/graphql-php/zipball/7cc863df37b2270ec2b57cb9d322da064d832a59",
-                "reference": "7cc863df37b2270ec2b57cb9d322da064d832a59",
+                "url": "https://api.github.com/repos/webonyx/graphql-php/zipball/f438a726cd523bc584e78d866eca270165c42fd5",
+                "reference": "f438a726cd523bc584e78d866eca270165c42fd5",
                 "shasum": ""
             },
             "require": {
@@ -778,7 +710,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD"
+                "MIT"
             ],
             "description": "A PHP port of GraphQL reference implementation",
             "homepage": "https://github.com/webonyx/graphql-php",
@@ -786,7 +718,7 @@
                 "api",
                 "graphql"
             ],
-            "time": "2017-08-30T16:33:58+00:00"
+            "time": "2018-04-17T10:34:43+00:00"
         }
     ],
     "packages-dev": [],
