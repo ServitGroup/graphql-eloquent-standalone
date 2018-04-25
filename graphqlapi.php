@@ -2,22 +2,10 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-use \GraphQL\Schema;
-use \GraphQL\GraphQL as GraphQLbase;
-use GraphQL\Type\Definition\ObjectType;
-use \GraphQL\Error\FormattedError;
 try {
-
     GraphQL::require_all(__DIR__.'/graphql');
     GraphQL::loadQuery(__DIR__.'/graphql/query');
-    GraphQL::loadMutation(__DIR__.'/graphql/query');
-    $q = GraphQL::getQuery();
-    dump($q);
-    // GraphQL::loadMutation(__DIR__.'/graphql/emutation');
-
-    // GraphQL::includeDir(__DIR__.'/graphql/query');
-    // GraphQL::includeDir(__DIR__.'/graphql/mutation');
-
+    GraphQL::loadMutation(__DIR__.'/graphql/mutation');
     $appContext = new AppContext();
     $appContext->viewer = User::find(1);
     $appContext->rootUrl = 'http://localhost:8080';
@@ -30,33 +18,10 @@ try {
         $data = $_REQUEST;
     }
     $data += ['query' => null, 'variables' => null];
-
     if (null === $data['query']) {
         $data['query'] = '{user(id:1){id,firstName,lastName,email}}';
     }
-
-    $useryqry = (new UserQuery())->getFields();  // type of Objectype
-    $queryqry = (new FileQuery())->getFields();  // type of Objectype
-
-    $query = new ObjectType(['name'=>'Query','fields'=> $useryqry    + $queryqry]);
-    $schema = new Schema([
-        'query' => $query
-    ]);
-        
-    $result = GraphQLbase::execute(
-        $schema,
-        $data['query'],
-        null,
-        $appContext,
-        (array) $data['variables']
-    );
-
-    if (!empty($_GET['debug']) && !empty($phpErrors)) {
-        $result['extensions']['phpErrors'] = array_map(
-            ['GraphQL\Error\FormattedError', 'createFromPHPError'],
-            $phpErrors
-        );
-    }
+    $rs = GraphQL::execute($data['query'], $data['variables'], $appContext);
     $httpStatus = 200;
 } catch (\Exception $error) {
     $httpStatus = 500;
@@ -66,6 +31,7 @@ try {
         $result['errors'] = [FormattedError::create('Unexpected Error')];
     }
 }
-
 // header('Content-Type: application/json', true, $httpStatus);
-echo json_encode($result);
+// dump($rs);
+echo json_encode($rs);
+
