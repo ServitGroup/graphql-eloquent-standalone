@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 use \GraphQL\Schema;
 use \GraphQL\GraphQL as GraphQLbase;
 use GraphQL\Type\Definition\ObjectType;
@@ -6,7 +9,12 @@ use \GraphQL\Error\FormattedError;
 try {
 
     GraphQL::require_all(__DIR__.'/graphql');
-    GraphQL::includeDir(__DIR__.'/graphql');
+    GraphQL::loadQuery(__DIR__.'/graphql/query');
+    GraphQL::loadMutation(__DIR__.'/graphql/query');
+    $q = GraphQL::getQuery();
+    dump($q);
+    // GraphQL::loadMutation(__DIR__.'/graphql/emutation');
+
     // GraphQL::includeDir(__DIR__.'/graphql/query');
     // GraphQL::includeDir(__DIR__.'/graphql/mutation');
 
@@ -29,6 +37,7 @@ try {
 
     $useryqry = (new UserQuery())->getFields();  // type of Objectype
     $queryqry = (new FileQuery())->getFields();  // type of Objectype
+
     $query = new ObjectType(['name'=>'Query','fields'=> $useryqry    + $queryqry]);
     $schema = new Schema([
         'query' => $query

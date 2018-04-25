@@ -13,10 +13,11 @@ class GraphQL
     protected $app;
 
     protected static $types = [];
+    protected static $querys = [];
+    protected static $mutations = [];
+    protected static $schemas = [];
     private static $max_scan_depth = 2;
-
-    protected $schemas = [];
-    protected $mutation = [];
+    
     protected $typesInstances = [];
 
 
@@ -316,19 +317,51 @@ class GraphQL
         return $this->typesInstances[$type->name . 'Pagination'];
     }
 
-    public static function includeDir($path)
-    {
+    public static function getQuery() {
+        $query = new objectType([
+            'name' => 'Query',
+            'fields'=> self::$querys
+        ]);
+        return $query;
+    }
+
+    
+    public static function loadQuery($path)
+    {   
         if($path){
             $dir = new \RecursiveDirectoryIterator($path);
             $iterator = new \RecursiveIteratorIterator($dir);
             foreach ($iterator as $file) {
                 $fname = $file->getFilename();
                 if (preg_match('%\.php$%', $fname)) {
-                    if ($fname != 'index.php') require_once $file->getPathname();
+                    $queryclass = basename($fname,".php");
+                    $q =  new $queryclass();
+                    self::$querys += $q->getFields();
                 }
             }
         }
     }
+    
+    public static function getMutation() {
+        return self::$mutations;
+    }
+
+    public static function loadMutation($path)
+    {   
+        if($path){
+            $dir = new \RecursiveDirectoryIterator($path);
+            $iterator = new \RecursiveIteratorIterator($dir);
+            foreach ($iterator as $file) {
+                $fname = $file->getFilename();
+                if (preg_match('%\.php$%', $fname)) {
+                    $queryclass = basename($fname,".php");
+                    $q =  new $queryclass();
+                    self::$mutations += $q->getFields();
+                }
+            }
+        }
+    }
+    
 
 
     public static function require_all($dir, $depth = 0)
